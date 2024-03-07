@@ -20,12 +20,12 @@ class RiderInfo extends StatelessWidget {
             backgroundImage: AssetImage("assets/Avatar.png"),
           ),
           title: const Text(
-            "Mike Rojnidoost",
+            "Carlos Neto",
             style: TextStyle(
               fontWeight: FontWeight.w500,
             ),
           ),
-          subtitle: const Text("860m - 28min"),
+          subtitle: const Text("450m - 1min"),
           trailing: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: primaryColor,

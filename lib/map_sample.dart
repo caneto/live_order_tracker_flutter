@@ -31,14 +31,13 @@ class MapSampleState extends State<MapSample> {
   late PermissionStatus _permissionGranted;
   LocationData? currentLocation;
 
-  static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
-  static const LatLng destination = LatLng(37.33429383, -122.06600055);
+  static const LatLng sourceLocation = LatLng(-22.88872735, -43.31317968);
+  static const LatLng destination = LatLng(-22.89067604, -43.31035141);
   Location location = Location();
 
   CameraPosition? initialCameraPosition;
 
   void initialLocation() async {
-    
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
@@ -60,7 +59,7 @@ class MapSampleState extends State<MapSample> {
         currentLocation = currentLoc;
         initialCameraPosition = CameraPosition(
           target: LatLng(currentLoc.latitude!, currentLoc.longitude!),
-          zoom: 14.5,
+          zoom: 15.5,
           tilt: 59,
           bearing: -70,
         );
@@ -72,7 +71,7 @@ class MapSampleState extends State<MapSample> {
             CameraUpdate.newCameraPosition(
               CameraPosition(
                 target: LatLng(newLoc.latitude!, newLoc.longitude!),
-                zoom: 14.5,
+                zoom: 15.5,
                 tilt: 59,
                 bearing: -70,
               ),
@@ -141,9 +140,11 @@ class MapSampleState extends State<MapSample> {
 
   @override
   void initState() {
-    initialLocation();
-    getPolyPoints();
-    setSourceAndDestinationIcons();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      initialLocation();
+      getPolyPoints();
+      setSourceAndDestinationIcons();
+    });
     super.initState();
   }
 
